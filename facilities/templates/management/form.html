@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<div class="w3-container">
+
+<h2>Project Information </h2>
+
+<br>
+<div class="w3-bar w3-border w3-light-grey">
+  <a href="#" class="w3-bar-item w3-button w3-text-teal">Home</a>
+  <a href="#" class="w3-bar-item w3-button">Login</a>
+  <a href="#" class="w3-bar-item w3-button">About Us</a>
+  <a href="#" class="w3-bar-item w3-button">Status</a>
+</div><br>
+
+
+<head>
+	<title>Form</title>
+
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--The 3 meta tags first-->
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <meta name="Project" content="">
+
+<header class="container">
+
+    <form>
+
+	First Name:<br> 
+	<input type="text"><br>
+    
+  
+       Last name:<br>
+       <input type="text"><br>
+
+	 <link href="{% static 'management/bootstrap.min.css'%}" rel="stylesheet">
+
+
+
+
+		<font size ="4" color="blue">Project Catergory:</font><br>
+	        <form>
+            <label class="radio-inline"> <input type="radio" name="safety">Safety </label>
+            <label class="radio-inline"> <input type="radio" name="environmental">Environmental </label>
+		    <label class="radio-inline"> <input type="radio" name="regulatory">Regulatory </label>
+		    <label class="radio-inline"> <input type="radio" name="fee">Fees</label><br>
+
+	<font size ="4" color="blue">Project Type:</font> <br>
+     <select>
+     	<option value="select">Select One</option>
+    	<option value="hazwastemanagement">Hazardous Waste Management</option>
+    	<option value="emergencyresponsemanagement">Emergency Response Management</option>
+    	<option value="Storm">Storm</option>
+    	<option value="ppe">Personal Protective Equipment</option>
+    	<option value="wokerscomp">Workers Comp</option>
+    	<option value="iipp">IIPP</option>
+    </select><br><br>
+
+<font size ="4" color="blue">Project Status Type:</font> <br>
+     <select>
+     	<option value="select">Select One</option>
+    	<option value="notstarted">Not Started</option>
+    	<option value="inprogress">In Progress</option>
+    	<option value="conpleted">Completed</option>
+    	<option value="pendingapprovalinitial">Pending Initial Approval</option>
+    	<option value="pendingfinalapproval">Pending Final Approval</option>
+    	</select><br><br>
+
+
+   </form>
+
+
+</header>
+</html>
+
+
+   <!--Bootstrap Core CSS-->
+   <link href="{% static 'management/bootstrap.min.css'%}" rel="stylesheet">
+
+   <!--Custom styles for the template-->
+
+   <link href="w3.css" rel="stylesheet">
+
+
+
+    <body class="container">
+
+   	<from class ="form-comment">
+   		<h2 class="from-signin-heading">Form</h2>
+   		<div class="form-group">
+   			<label for=" comment" class="sr-only">Comment:</label>
+   			<textarea class="form-control" rows="8" id="comment"placeholder="Comment" required></textarea>
+
+   		</div>
+
+   	   		 <button class="btn btn-lg btn-primary btn-block"type="submit">Submit</button></form>
+
+
+</div>
+
+</body>
+</html>

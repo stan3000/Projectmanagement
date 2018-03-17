@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--The 3 meta tags first-->
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <meta name="Project" content="">
+
+   <title>Management Project</title>
+
+   <!--Bootstrap Core CSS-->
+   <link href="{% static 'management/bootstrap.min.css'}" rel="stylesheet">
+
+   <!--Custom styles for the template-->
+
+   <link href="sign.css" rel="stylesheet">
+   <link href="form.css" rel="stylesheet">
+
+</head>
+
+  <body>
+
+   <div class="container theme-showcase"roles="main">
+
+      <div class="jumbotron">
+         <h1>Project Management</h1>
+         <a type ="button" class="btn btn-link" href="{% url 'sign' %}">Sign in</a>
+         <a type ="button" class="btn btn-link" href="{% url 'form' %}">form in</a>
+      </div>
+
+      <div class="page-header">
+         <h2>Name</h2>
+      </div>
+      <div class="well">
+
+      <p> This is my firs project on html code love this training Python is an interpreted high-level programming language for general-purpose programming. Created by Guido van Rossum and first released in 1991, Python has a design philosophy that emphasizes code readability, and a syntax that allows programmers to express concepts in fewer lines of code, notably using </p>
+      </div>      
+
+   </div><!--/container -->
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+{% extends "admin/change_list.html" %}
+{% load staticfiles %}
+{% block extrahead %}
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
+    <script>
+        var randomColorGenerator = function () {
+            return '#' + (Math.random().toString(16) + '0000000').slice(2, 8);
+        };
+        var options = {
+            responsive: true,
+            maintainAspectRatio: true,
+            legend: {
+                position: 'left'
+            },
+            title: {
+                display: true
+            },
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            }
+        };
+        window.onload = function () {
+            var ctx = document.getElementById("Vendor_Name-chart",);
+            {% regroup cl.queryset|dictsort:"Vendor_Name" by get_Vendor_Name_display as Vendor_Name_list %}
+            var lineChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: [{% for Vendor_Name in Vendor_Name_list %}'{{ Vendor_Name.grouper }}',{% endfor %}],
+                    datasets: [{
+                        data: [{% for Vendor_Name in Vendor_Name_list %}'{{ Vendor_Name.list|length }}',{% endfor %}],
+                        backgroundColor: [{% for Vendor_Name in Vendor_Name_list %}randomColorGenerator(),{% endfor %}]
+                    }]
+                },
+                options: options
+            });
+
+
+
+
+            //===============ORIGINAL-END HERE CATEGORY (PROJECT_INFO)===================================================
+            ctx = document.getElementById("Vendor_Name-chart");
+            {% regroup cl.queryset|dictsort:"Building_Address" by Building_Address as Building_Address_list %}
+            lineChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: [{% for Building_Address in Building_Address_list %}'{{ Building_Address.grouper }}',{% endfor %}],
+                    datasets: [{
+                        data: [{% for Building_Address in Building_Address_list %}'{{ Building_Address.list|length }}',{% endfor %}],
+                        backgroundColor: [{% for Building_Address in Building_Address_list %}randomColorGenerator(),{% endfor %}]
+                    }]
+                }, options: options
+            })
+
+            
+            //============= ORIGINAL PROJECT TYPE END HERE (PROJECT INFO)===============================================
+
+            ctx = document.getElementById("project_Type-chart");
+            {% regroup cl.queryset|dictsort:"status" by get_status_display as status_list %}
+            lineChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: [{% for status in status_list %}'{{ status.grouper }}',{% endfor %}],
+                    datasets: [{
+                        data: [{% for status in status_list %}'{{ status.list|length }}',{% endfor %}],
+                        backgroundColor: [{% for status` in status_list %}randomColorGenerator(),{% endfor %}]
+                    }]
+                }, options: options
+            });
+        
+       }
+
+
+       // ORIGINAL GRAPH ENDED HERE = CODE BELOW IS ADDITIONAL GRAPGHS FOR COMPLIANCE, MANIFEST, AND SUSTAINABLITY=====
+
+
+
+
+
+
+    </script>
+{% endblock %}
+{% block content %}
+    <h1> Graphs </h1>
+    <hr>
+    <div class="row">
+        <div class="col-sm-4">
+            <canvas id="category-chart" style="width: 100px !important;"></canvas>
+        </div>
+        <div class="col-sm-4">
+            <canvas id="project_Type-chart" style="width: 100px !important;"></canvas>
+        </div>
+        <div class="col-sm-4">
+            <canvas id="status-chart" style="width: 100px !important;"></canvas>
+        </div>
+    </div>
+    {{ block.super }}
+{% endblock %}
+© 2018 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+API
+Training
+Shop
+Blog
+About
+
+
+<!-- ===========================  TEMPLATE MODIFY -->
+
+{% extends "admin/change_form.html" %}
+{% load i18n admin_static admin_modify %}
+{% block content %}
+<div id="content-main">
+  <form action="" method="POST">
+    {% csrf_token %}
+    {% if form.non_field_errors|length > 0 %}
+      <p class="errornote">
+          "Please correct the errors below."
+      </p>
+      {{ form.non_field_errors }}
+    {% endif %}
+    <fieldset class="module aligned">
+      {% for field in form %}
+        <div class="form-row">
+          {{ field.errors }}
+          {{ field.label_tag }}
+          {{ field }}
+          {% if field.field.help_text %}
+          <p class="help">
+            {{ field.field.help_text|safe }}
+          </p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </fieldset>
+    <div class="submit-row">
+      <input type="submit" class="default" value="Submit”>
+    </div>
+  </form>
+</div>
+{% endblock %}

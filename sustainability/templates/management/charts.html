@@ -1,0 +1,33 @@
+{% extends'base.html'%}
+
+<script>
+{% block jquery %}
+var endpoint ='/api/data/' 
+var customerDjango = parseInt("{{ customers}}") * 23
+console.log(customerDjango)
+$.ajax({
+	method:"GET",
+	url: endpoint,
+	success: function(data){
+		console.log(data)
+		console.log(data.customers*122)
+	},
+    error: function(error_data){
+    	console.log("error")
+    	console.log(error_data)
+    }
+	})
+
+
+{% endblock %}
+</script>
+
+{% block content %}
+
+<div class='row'>
+	<div class='col-sm-12'url-endpoint='{% url"api-data"%}'>
+		<h1>Hello World</h1>
+	</div>
+</div>
+
+{% block content %}
