@@ -123,5 +123,5 @@ class FacilityDatabase(models.Model):
 
 # ==============DISPLAYING TABLE INFO============================================
     def __str__(self):
-       return'Full_Name:{},Title:{}, Building_Address:{},country: {}, Email_Address{}'.format(self.Full_Name, self.Title, self.Building_Address, self.country)
+       return'Full_Name:{},Title:{}, Building_Address:{},country: {}, Email_Address{}'.format(self.Full_Name, self.Title, self.Building_Address, self.country, self.Email_Address)
 

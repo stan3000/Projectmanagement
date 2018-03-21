@@ -8,7 +8,7 @@ from .models import SustainableReport
 #=======CLASS START HERE======================
 
 class SustainableReportAdmin(admin.ModelAdmin):
-    list_display = ('building', 'city', 'region', 'Type','Amount_Consumped','unit')
+    list_display = ('building', 'city', 'region', 'Type','Amount_Consumed','unit', 'Amount_Spent')
     list_filter = ('Type','city','status')
     save_as = True
     save_on_top = True

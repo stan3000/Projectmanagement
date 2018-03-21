@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'webapp',
     'safety',
     'management',
-    'dashing',
     'sustainability',
     'Dashboard',
     'compliance_matrix',

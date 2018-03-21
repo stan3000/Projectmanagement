@@ -83,8 +83,8 @@ class SustainableReport(models.Model):
     category = models.CharField(max_length=150, choices=CATEGORY_STATEMENTS)
 
 #======Consumped===========================
-    Amount_Consumped = models.CharField(max_length=200)
-    Amount_Spent = models.CharField(max_length=200)
+    Amount_Consumed = models.CharField(max_length=15)
+    Amount_Spent = models.CharField(max_length=15)
 
 #===========UNIT TYPE=====================
     UNITS= (
@@ -93,7 +93,7 @@ class SustainableReport(models.Model):
         ('Gallons', 'Gallons'),
        
     )
-    unit = models.CharField(max_length=100, choices=UNITS)
+    unit = models.CharField(max_length=16, choices=UNITS)
 
 
 #===========Year=====================
@@ -121,4 +121,4 @@ class SustainableReport(models.Model):
 
 # ==============DISPLAYING TABLE INFO
     def __str__(self):
-       return'data_Recorded_By:{},building:{}, city:{}, region: {}, Type :{}, Amount_Consumped:{}, unit:{}'.format(self.data_Recorded_By, self.building, self.city, self.region, self.Type, self.Amount_Consumped,self.unit)
+       return'data_Recorded_By:{},building:{}, city:{}, region: {}, Type :{}, Amount_Consumed:{}, unit:{}, Amount_Spent:{}'.format(self.data_Recorded_By, self.building, self.city, self.region, self.Type, self.Amount_Consumed,self.unit, self.Amount_Spent)

@@ -9,7 +9,7 @@ class FacilityDatabaseAdmin(admin.ModelAdmin):
     list_filter = ('city','Department','country')
     save_as = True
     save_on_top = True
-    change_list_template = 'change_list_graph.html'
+    change_list_template = 'change_list_graph_facilities.html'
 
 
 

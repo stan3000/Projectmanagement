@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import ComplianceMatric, EHSProjectApplicabliltyStatu
+from .models import ComplianceMatric, EHSProjectApplicabliltyStatusReport
 
 
 
@@ -15,7 +15,7 @@ class ComplianceMatricAdmin(admin.ModelAdmin):
     change_list_template = 'change_list_graph.html'
 
 
-class EHSProjectApplicableStatuAdmin(admin.ModelAdmin):
+class EHSProjectApplicabliltyStatusReportAdmin(admin.ModelAdmin):
     list_display = ('Individual_Responsible','Program_in_Place', 'Ranking')
     list_filter = ('Type','category','status')
     save_as = True
@@ -25,4 +25,4 @@ class EHSProjectApplicableStatuAdmin(admin.ModelAdmin):
 
 # Register your models here.  
 admin.site.register(ComplianceMatric, ComplianceMatricAdmin)
-admin.site.register(EHSProjectApplicabliltyStatu)
+admin.site.register(EHSProjectApplicabliltyStatusReport, EHSProjectApplicabliltyStatusReportAdmin)

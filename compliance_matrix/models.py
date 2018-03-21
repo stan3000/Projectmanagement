@@ -19,7 +19,7 @@ class ComplianceMatric(models.Model):
        ('Permit/License/Registration RenewalTD ', 'Permit/License/Registration RenewalTD '),
         
     )
-    Type = models.CharField(max_length=1, choices=TYPES)
+    Type = models.CharField(max_length=100, choices=TYPES)
 
 
 #===========FEES REQUIRED=====================
@@ -29,7 +29,7 @@ class ComplianceMatric(models.Model):
         ('No', 'No'),
          
     )
-    fee = models.CharField(max_length=1, choices=FEES_REQUIRED)
+    fee = models.CharField(max_length=100, choices=FEES_REQUIRED)
 
 
 
@@ -192,18 +192,18 @@ class ComplianceMatric(models.Model):
       
 
     )
-    status = models.CharField(max_length=1, choices= CURENT_STATUS) 
+    status = models.CharField(max_length=100, choices= CURENT_STATUS) 
 
 # ==============DISPLAYING TABLE INFO
     def __str__(self):
-       return'Program_Name:{}, building{}, Type:{}, Enforcement_Agency:{}, frequency: {}, Type :{}, EHS_Person:{}, category:{}'.format(self.Program_Name, self.building, self.Enforcement_Agency, self.frequency, self.Type, self.EHS_Person,self.category)
+       return'Program_Name:{}, building{}, Type:{}, Enforcement_Agency:{}, frequency: {}, EHS_Person:{}, category:{}'.format(self.Program_Name, self.building, self.Enforcement_Agency, self.frequency, self.Type, self.EHS_Person,self.category)
 
 
 # 55555555555555555555555555555555555555555555555555555555555555555555555
 #========EPAS TRACKER==================================================
 # 3232333333333333333333333333333333333333333333333333333333333333333
 
-class EHSProjectApplicabliltyStatu(models.Model):
+class EHSProjectApplicabliltyStatusReport(models.Model):
     
     RESPONSIBLE_INDIVIDUAL = (
         ('Stanley Njoku', 'Stanley Njoku'),
@@ -327,7 +327,7 @@ class EHSProjectApplicabliltyStatu(models.Model):
              
 
     )
-    Type = models.CharField(max_length=1, choices= TYPES)
+    Type = models.CharField(max_length=100, choices= TYPES)
 
 
 
@@ -343,7 +343,7 @@ class EHSProjectApplicabliltyStatu(models.Model):
              
 
     )
-    category = models.CharField(max_length=1, choices= CATEGORIES)
+    category = models.CharField(max_length=50, choices= CATEGORIES)
 
 
 
@@ -357,7 +357,7 @@ class EHSProjectApplicabliltyStatu(models.Model):
              
 
     )
-    Site_Applicability = models.CharField(max_length=1, choices= SITE_APPLICABILITIES)
+    Site_Applicability = models.CharField(max_length=50, choices= SITE_APPLICABILITIES)
 
 
 
@@ -386,7 +386,7 @@ class EHSProjectApplicabliltyStatu(models.Model):
              
 
     )
-    Program_in_Place = models.CharField(max_length=1, choices= PROGRAMS_IN_PLACE)
+    Program_in_Place = models.CharField(max_length=100, choices= PROGRAMS_IN_PLACE)
 
 
 #===========CURENT STATUS=====================
@@ -400,7 +400,7 @@ class EHSProjectApplicabliltyStatu(models.Model):
              
 
     )
-    status = models.CharField(max_length=1, choices= CURENT_STATUS) 
+    status = models.CharField(max_length=100, choices= CURENT_STATUS) 
 
 
 #===========Specific Site Contact=========================================
@@ -420,8 +420,8 @@ class EHSProjectApplicabliltyStatu(models.Model):
 
     #===========DUE DATE=====================
 
-    Estimated_completion_date = models.DateField(default=timezone) 
+    Estimated_completion_date = models.DateField() 
 
  # ==============DISPLAYING TABLE INFO
     def __str__(self):
-       return'Individual_Responsible:{}, building:{}, Program:{},agency:{}, category:{}, status: {}, Type:{}, EHS_Person:{}, Ranking:{}, Program_in_Place:{}'.format(self.Individual_Responsible, self.building, self.Program, self.agency, self.category, self.status, self.Type, self.EHS_Person, self.Ranking, self.Program_in_Place )
+       return'Individual_Responsible:{}, building:{}, Program:{}, category:{}, status: {}, Type:{}, Ranking:{}, Program_in_Place:{}'.format(self.Individual_Responsible, self.building, self.Program, self.category, self.status, self.Type, self.Ranking, self.Program_in_Place )
