@@ -21,15 +21,19 @@ from django.urls import path, include
 
 
 urlpatterns = [
+    # path('', Home.as_view(), name='home')
     path('admin/', admin.site.urls),
     path('',include('webapp.urls')),
     path('',include('safety.urls')),
     path('management/',include('management.urls')),
+    # path('myproject/',include('myproject.urls'))
+
     # path('',include('sustainability.urls')),
     # path('inbox/notifications/', include(notifications.urls, namespace='notifications')),
+]
     
     
  #======Fluent_Dashbaod 2-7-2018=START HERE=======================================
-    path('admintools/', include('admin_tools.urls')),
+    # path('admintools/', include('admin_tools.urls')),
     
-   ]    
+

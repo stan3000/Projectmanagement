@@ -1,0 +1,26 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ title }} | Environmental Health and Safety Project Management System {% endblock %}
+
+{% block extrastyle %}
+<style>
+#header{
+	background-color: #0e82bb;
+}
+</style>
+
+{% endblock %}
+
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">EHS Project Management System</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+
+return render(
+    request,
+    'index.html',
+     context={'num_books':num_books,'num_instances':num_instances,'num_instances_available':num_instances_available,'num_authors':num_authors},
+)

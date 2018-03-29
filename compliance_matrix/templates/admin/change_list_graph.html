@@ -24,39 +24,35 @@
             }
         };
         window.onload = function () {
-            var ctx = document.getElementById("Vendor_Name-chart",);
-            {% regroup cl.queryset|dictsort:"Vendor_Name" by get_Vendor_Name_display as Vendor_Name_list %}
+            var ctx = document.getElementById("category-chart",);
+            {% regroup cl.queryset|dictsort:"category" by get_category_display as category_list %}
             var lineChart = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: [{% for Vendor_Name in Vendor_Name_list %}'{{ Vendor_Name.grouper }}',{% endfor %}],
+                    labels: [{% for category in category_list %}'{{ category.grouper }}',{% endfor %}],
                     datasets: [{
-                        data: [{% for Vendor_Name in Vendor_Name_list %}'{{ Vendor_Name.list|length }}',{% endfor %}],
-                        backgroundColor: [{% for Vendor_Name in Vendor_Name_list %}randomColorGenerator(),{% endfor %}]
+                        data: [{% for category in category_list %}'{{ category.list|length }}',{% endfor %}],
+                        backgroundColor: [{% for category in gender_list %}randomColorGenerator(),{% endfor %}]
                     }]
                 },
                 options: options
             });
 
-
-
-
-            //===============ORIGINAL-END HERE CATEGORY (PROJECT_INFO)===================================================
-            ctx = document.getElementById("Vendor_Name-chart");
-            {% regroup cl.queryset|dictsort:"Building_Address" by Building_Address as Building_Address_list %}
+            // END HERE CATEGORY ===================================
+            ctx = document.getElementById("status-chart");
+            {% regroup cl.queryset|dictsort:"project_Type" by project_Types as project_Types_list %}
             lineChart = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: [{% for Building_Address in Building_Address_list %}'{{ Building_Address.grouper }}',{% endfor %}],
+                    labels: [{% for project_Type in project_Type_list %}'{{ project_Type.grouper }}',{% endfor %}],
                     datasets: [{
-                        data: [{% for Building_Address in Building_Address_list %}'{{ Building_Address.list|length }}',{% endfor %}],
-                        backgroundColor: [{% for Building_Address in Building_Address_list %}randomColorGenerator(),{% endfor %}]
+                        data: [{% for project_Type in project_Type_list %}'{{ project_Type.list|length }}',{% endfor %}],
+                        backgroundColor: [{% for project_Type in project_Type_list %}randomColorGenerator(),{% endfor %}]
                     }]
                 }, options: options
-            })
+            });
 
-            
-            //============= ORIGINAL PROJECT TYPE END HERE (PROJECT INFO)===============================================
+            // PROJECT TYPE END HERE=====================
 
             ctx = document.getElementById("project_Type-chart");
             {% regroup cl.queryset|dictsort:"status" by get_status_display as status_list %}
@@ -72,15 +68,6 @@
             });
         
        }
-
-
-       // ORIGINAL GRAPH ENDED HERE = CODE BELOW IS ADDITIONAL GRAPGHS FOR COMPLIANCE, MANIFEST, AND SUSTAINABLITY=====
-
-
-
-
-
-
     </script>
 {% endblock %}
 {% block content %}

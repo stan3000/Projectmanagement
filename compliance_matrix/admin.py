@@ -16,8 +16,8 @@ class ComplianceMatricAdmin(admin.ModelAdmin):
 
 
 class EHSProjectApplicabliltyStatusReportAdmin(admin.ModelAdmin):
-    list_display = ('Individual_Responsible','Program_in_Place', 'Ranking')
-    list_filter = ('Type','category','status')
+    list_display = ('Individual_Responsible','Program', 'building','Program_in_Place', 'Ranking','status')
+    list_filter = ('category','Program_in_Place','status','Type')
     save_as = True
     save_on_top = True
     change_list_template = 'change_list_graph.html'

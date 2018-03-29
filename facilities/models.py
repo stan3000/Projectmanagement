@@ -5,6 +5,9 @@ from django import forms
 
 # Create your models here.
 class FacilityDatabase(models.Model):
+    class Meta:
+        verbose_name = 'Facilities Database Record'
+ 
 
     Full_Name = models.CharField(max_length=200)
     Title = models.CharField(max_length=200)

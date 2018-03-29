@@ -6,6 +6,9 @@ from django import forms
 #===========Project_Information=============================
 
 class ProjectInformation(models.Model):
+    class Meta:
+        verbose_name = 'Project Information Record'
+        
 
     RESPONSIBLE_PARTY = (
         ('Stanley Njoku', 'Stanley Njoku'),

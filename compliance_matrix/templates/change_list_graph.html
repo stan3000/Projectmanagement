@@ -2,28 +2,6 @@
 {% load staticfiles %}
 {% block extrahead %}
 
-#------------NOTIFICATION 3/23/2018---------------------------------------------
-
-{{ comment.user }} commented on {{ comment.object }}
-
-#-----------templates/notification/new_comment/notice.html
-<a href="{{ comment.user.get_absolute_url }}">{{ comment.user }}</a> commented <a href="{{ comment.content_object.get_absolute_url }}">{{ comment.content_object }}</a>
-
-#-------------templates/notification/new_comment/full.txt
-{{ comment.user }} commented on {{ comment.content_object }}
-
-Comment:
-{{ comment.comment }}
-
-Reply on: 
-http://{{ site.domain }}{{ comment.content_object.get_absolute_url }}
-
-
-#----------------NOTIFICATION End Here------------------------------------
-
-
-
-
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
@@ -77,20 +55,18 @@ http://{{ site.domain }}{{ comment.content_object.get_absolute_url }}
                 }, options: options
             })
 
-
-
             
             //============= ORIGINAL PROJECT TYPE END HERE (PROJECT INFO)===============================================
 
             ctx = document.getElementById("project_Type-chart");
-            {% regroup cl.queryset|dictsort:"city" by get_city_display as city_list %}
+            {% regroup cl.queryset|dictsort:"status" by get_status_display as status_list %}
             lineChart = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: [{% for city in city_list %}'{{ city.grouper }}',{% endfor %}],
+                    labels: [{% for status in status_list %}'{{ status.grouper }}',{% endfor %}],
                     datasets: [{
-                        data: [{% for city in city_list %}'{{ city.list|length }}',{% endfor %}],
-                        backgroundColor: [{% for city` in city_list %}randomColorGenerator(),{% endfor %}]
+                        data: [{% for status in status_list %}'{{ status.list|length }}',{% endfor %}],
+                        backgroundColor: [{% for status` in status_list %}randomColorGenerator(),{% endfor %}]
                     }]
                 }, options: options
             });
@@ -113,7 +89,6 @@ http://{{ site.domain }}{{ comment.content_object.get_absolute_url }}
         <div class="col-sm-4">
             <canvas id="project_Type-chart" style="width: 100px !important;"></canvas>
         </div>
-
         <div class="col-sm-4">
             <canvas id="status-chart" style="width: 100px !important;"></canvas>
         </div>

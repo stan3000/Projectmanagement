@@ -7,6 +7,9 @@ from django import forms
 # Create your models here.
 class ComplianceMatric(models.Model):
     Program_Name = models.CharField(max_length=300)
+
+    class Meta:
+       verbose_name = 'Compliance Metric'
     
 
 #===========Type Task=====================
@@ -56,7 +59,7 @@ class ComplianceMatric(models.Model):
         ('No', 'No'),
          
     )
-    Submittal_Required = models.CharField(max_length=50, choices=SUBMITTALS_REQUIRED)
+    Submittal_Required = models.CharField("Submittal Required?", max_length=50, choices=SUBMITTALS_REQUIRED)
 
 
 #===========Local Enforcement Agency=====================
@@ -201,9 +204,12 @@ class ComplianceMatric(models.Model):
 
 # 55555555555555555555555555555555555555555555555555555555555555555555555
 #========EPAS TRACKER==================================================
-# 3232333333333333333333333333333333333333333333333333333333333333333
+# 3232333333333333333333333333333333333333333333333333333333333333333333
 
 class EHSProjectApplicabliltyStatusReport(models.Model):
+
+    class Meta:
+        verbose_name = "EPAS Report"
     
     RESPONSIBLE_INDIVIDUAL = (
         ('Stanley Njoku', 'Stanley Njoku'),
@@ -379,14 +385,14 @@ class EHSProjectApplicabliltyStatusReport(models.Model):
 #===========Program in place?=====================
 
     PROGRAMS_IN_PLACE= (
-        ('Yes', 'Yes'),
-        ('No', 'No'),
+        ('Yes - Program in place', 'Yes - Program in place'),
+        ('No - Program in place', 'No - Program in place'),
         ('N/A', 'N/A'),
         ('Pending Verification', 'Pending Verification'),
              
 
     )
-    Program_in_Place = models.CharField(max_length=100, choices= PROGRAMS_IN_PLACE)
+    Program_in_Place = models.CharField( "Program in Place?", max_length=100, choices= PROGRAMS_IN_PLACE)
 
 
 #===========CURENT STATUS=====================
@@ -424,4 +430,5 @@ class EHSProjectApplicabliltyStatusReport(models.Model):
 
  # ==============DISPLAYING TABLE INFO
     def __str__(self):
+       
        return'Individual_Responsible:{}, building:{}, Program:{}, category:{}, status: {}, Type:{}, Ranking:{}, Program_in_Place:{}'.format(self.Individual_Responsible, self.building, self.Program, self.category, self.status, self.Type, self.Ranking, self.Program_in_Place )
