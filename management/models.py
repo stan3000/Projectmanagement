@@ -16,7 +16,8 @@ class ProjectInformation(models.Model):
         ('Lenka Barrettova', 'Lenka Barrettova'),
         ('Chris Bradshaw', 'Chris Bradshaw'),
         ('Connie Gordon', 'Connie Gordon'),
-        ('Kevin Tennyson', 'Kevin Tennyson'),
+        ('Xonie Lloyd', 'Xonie Lloyd'),
+        ('Jeffrey Hamilton', 'Jeffrey Hamilton'),
     )
     person_Responsible = models.CharField(max_length=150, choices= RESPONSIBLE_PARTY)
    
