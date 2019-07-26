@@ -133,6 +133,8 @@ class ComplianceMatric(models.Model):
         ('Mark Kessler', 'Mark Kessler'),
         ('Kimberly Jones', 'Kimberly Jones'),
         ('Jo Schneider', 'Jo Schneider'),
+        ('Xonie Lloyd', 'Xonie Lloyd'),
+        ('Jeffrey Hamilton', 'Jeffrey Hamilton'),
         
     )
     EHS_Person = models.CharField(max_length=300, choices= EHS_PERSONS)
